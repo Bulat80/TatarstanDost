@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Достопримечательности Татарстана</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Достопримечательности Татарстана</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#attractions">Достопримечательности</a></li>
+            <li><a href="#culture">Культура</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="home">
+        <h2>Добро пожаловать в Татарстан!</h2>
+        <p>Татарстан — это уникальный регион России, богатый историей и культурой.</p>
+        <button id="findNearby">Найти ближайшие достопримечательности</button>
+        <div id="nearbyAttractions"></div>
+    </section>
+
+    <section id="attractions">
+        <h2>Достопримечательности Татарстана</h2>
+        <ul id="attractionList">
+            <!-- Список достопримечательностей будет динамически заполняться -->
+        </ul>
+    </section>
+
+    <section id="culture">
+        <h2>Культура Татарстана</h2>
+        <p>Татарстан славится своей богатой культурой, традициями и кухней.</p>
+    </section>
+</main>
+
+<footer id="contacts">
+    <p>Контакты: <a href="mailto:info@tatarstan.com">info@tatarstan.com</a></p>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+    const attractions = [
+        {
+            название: "Казанский Кремль",
+            локация: "Казань, Кремлевская ул., 2",
+            координаты: [55.7864, 49.1221]
+        },
+        {
+            название: "Собор Святого Петра и Павла",
+            локация: "Казань, ул. Пушкина, 1",
+            координаты: [55.7887, 49.1225]
+        },
+        {
+            название: "Мечеть Кул Шариф",
+            локация: "Казань, Кремлевская ул., 1",
+            координаты: [55.7867, 49.1233]
+        },
+        // Добавьте остальные достопримечательности аналогичным образом
+    ];
+
+    // Заполнение списка достопримечательностей на странице
+    const attractionList = document.getElementById('attractionList');
+    attractions.forEach(attraction => {
+        const listItem = document.createElement('li');
+        listItem.textContent = ${attraction.название} - ${attraction.локация};
+        attractionList.appendChild(listItem);
+    });
+
+    document.getElementById('findNearby').addEventListener('click', function() {
+        const randomIndex = Math.floor(Math.random() * attractions.length);
+        const selectedAttraction = attractions[randomIndex];
+        document.getElementById('nearbyAttractions').innerText = Вы можете посетить: ${selectedAttraction.название} (${selectedAttraction.локация});
+    });
+</script>
+</body>
+</html>
